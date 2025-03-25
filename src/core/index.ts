@@ -13,4 +13,14 @@ function printCommands() {
   return `Commands: ${commands.map((c) => c.name).join(", ")}`;
 }
 
-export { commands, printCommands };
+function findMyWay(command: string) {
+  return commands.find((c) => {
+    if (typeof c.match === "string") {
+      return c.match === command;
+    }
+
+    return c.match.test(command);
+  });
+}
+
+export { commands, printCommands, findMyWay };
